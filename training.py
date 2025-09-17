@@ -7,7 +7,7 @@ import gymnasium as gym
 import os
 
 
-def train(timesteps=500_000):  # low timesteps for start
+def train(timesteps=5_000_000):  # low timesteps for start
     os.makedirs("logs", exist_ok=True)
     os.makedirs("model", exist_ok=True)
     log_path = "./logs/"

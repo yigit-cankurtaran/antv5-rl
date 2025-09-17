@@ -14,6 +14,8 @@ def test(model_path="./model/best_model.zip", watch_eps=5):
     for i in range(len(rewards)):
         print(f"run={i + 1}, reward={rewards[i]}, length={lengths[i]}")
 
+    env.close()
+
 
 if __name__ == "__main__":
     test()
