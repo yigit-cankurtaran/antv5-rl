@@ -13,9 +13,8 @@ def train(timesteps=500_000):  # low timesteps for start
     log_path = "./logs/"
     model_path = "./model/"
 
-    train_env = make_vec_env(gym.make("Ant-v5"), 4)
-    eval_env = DummyVecEnv([lambda: gym.make("Ant-v5")])
-    eval_env = Monitor(eval_env)
+    train_env = make_vec_env("Ant-v5", 4)
+    eval_env = DummyVecEnv([lambda: Monitor(gym.make("Ant-v5"))])
 
     eval_callback = EvalCallback(
         eval_env=eval_env,
