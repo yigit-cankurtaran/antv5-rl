@@ -7,7 +7,7 @@ import gymnasium as gym
 import os
 
 
-def train(timesteps=5_000_000):  # low timesteps for start
+def train(timesteps=500_000):  # low timesteps for testing
     os.makedirs("logs", exist_ok=True)
     os.makedirs("model", exist_ok=True)
     log_path = "./logs/"
@@ -15,6 +15,7 @@ def train(timesteps=5_000_000):  # low timesteps for start
 
     train_env = VecNormalize(make_vec_env("Ant-v5", 4))
     eval_env = DummyVecEnv([lambda: Monitor(gym.make("Ant-v5"))])
+    eval_env = VecNormalize(eval_env)
 
     eval_callback = EvalCallback(
         eval_env=eval_env,
