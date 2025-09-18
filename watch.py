@@ -1,9 +1,13 @@
+import os
 from stable_baselines3 import PPO
 from stable_baselines3.common.evaluation import evaluate_policy
 import gymnasium as gym
 
 
-def test(model_path="./model/best_model.zip", watch_eps=5):
+def test(model_path="./model/best_model.zip", env_path="./model/env.pkl", watch_eps=5):
+    if not os.path.isfile(model_path) or not os.path.isfile(env_path):
+        raise Exception("model or env don't exist, run training")
+
     env = gym.make("Ant-v5", render_mode="human")
     model = PPO.load(model_path, env=env)
 
