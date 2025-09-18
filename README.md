@@ -8,7 +8,7 @@ This implementation uses Stable-Baselines3 to train a PPO agent on the Ant-v5 en
 
 ## Demo
 
-[Demo Video](./demo.mov)
+![Demo](demo.gif)
 
 *Trained agent demonstrating learned locomotion behavior after 5M timesteps*
 
