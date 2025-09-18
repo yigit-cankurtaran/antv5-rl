@@ -1,0 +1,2 @@
+- i think the learning rate currently might be too low
+  - TODO: implement a linear decay, start high go low

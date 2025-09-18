@@ -7,7 +7,7 @@ import gymnasium as gym
 import os
 
 
-def train(timesteps=500_000):  # low timesteps for testing
+def train(timesteps=5_000_000):
     os.makedirs("logs", exist_ok=True)
     os.makedirs("model", exist_ok=True)
     log_path = "./logs/"
@@ -24,7 +24,13 @@ def train(timesteps=500_000):  # low timesteps for testing
         # the rest can be the defaults for now
     )
 
-    model = PPO("MlpPolicy", env=train_env)
+    model = PPO(
+        "MlpPolicy",
+        env=train_env,
+        learning_rate=5e-5,
+        gamma=0.995,  # long episodes, need to consider longer rewards
+        gae_lambda=0.85,
+    )
     model.learn(timesteps, eval_callback, progress_bar=True)
 
     train_env.save("./model/env.pkl")
