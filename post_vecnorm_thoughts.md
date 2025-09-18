@@ -1,3 +1,3 @@
 - i think the learning rate currently might be too low
   - TODO: implement a linear decay, start high go low
-  - TODO: also look up solved rewards and limit it to something close, training is taking too long as it is
+- TODO: limit final reward to around 5500 or so, i hit that relatively early
